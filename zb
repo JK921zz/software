@@ -1,0 +1,42 @@
+#include <iostream>
+#include "p1.h"
+ 
+using namespace std;
+ 
+int FindMaxArray(int* array, int num)
+{
+    if (array == NULL)
+        return 0;
+    int tmpSum = 0;
+    int MaxSum = 0;
+    for (int i = 0; i < num; i++)
+    {
+        int tmp = tmpSum + array[i];
+        if (tmp > array[i])
+        {
+            tmpSum = tmp;
+        }
+        else
+        {
+            tmpSum = array[i];
+        }
+        if (tmpSum > MaxSum)
+        {
+            MaxSum = tmpSum;
+        }
+    }
+    return MaxSum;
+}
+ 
+int main()
+{
+    int n;
+    int array[200];
+    cin >> n;
+    for (int i = 0; i < n; i++)
+    {
+        cin >> array[i];
+    }
+    int max = FindMaxArray(array, n);
+    cout << max << endl;
+}
